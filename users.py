@@ -61,10 +61,3 @@ def put_add(user_id: int, user_schema: UserRequest, users_service: UsersService 
     return users_service.update(user_req, user_id, user_schema)
 
 
-@router.delete('/{user_id}', status_code=status.HTTP_204_NO_CONTENT, name='Удалить пользователя')
-def delete(user_id: int, users_service: UsersService = Depends(), user_req: int = Depends(check_admin)):
-    """
-    Удалить пользователя
-    """
-    get_with_check(user_id, users_service)
-    return users_service.delete(user_id)
