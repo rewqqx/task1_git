@@ -56,13 +56,12 @@ def get_with_check(user_id: int, users_service: UsersService):
     if not result:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Продукт не найден')
     return result
-git
 
 
 @router.put('/{user_id}', response_model=UserResponse, name="Обновить информацию о пользователе")
-def put(user_id: int, user_schema: UserRequest, users_service: UsersService = Depends(), user_req: int = Depends(check_admin)):
+def put_add(user_id: int, user_schema: UserRequest, users_service: UsersService = Depends(), user_req: int = Depends(check_admin)):
     """
-    Обновить информацию о пользователе
+    Обновить информацию обо мне
     """
     get_with_check(user_id, users_service)
     return users_service.update(user_req, user_id, user_schema)
