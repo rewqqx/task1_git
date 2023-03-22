@@ -30,22 +30,3 @@ def get(users_service: UsersService = Depends(), user_id: int = Depends(get_curr
     print(user_id)
     return users_service.all()
 
-
-@router.get('/get/{user_id}', response_model=UserResponse, name='Получить одного пользователя')
-def get(user_id: int, users_service: UsersService = Depends(), user_req: int = Depends(check_admin)):
-    """
-    Получить одного пользователя
-    """
-    return get_with_check(user_id, users_service)
-
-
-
-@router.put('/{user_id}', response_model=UserResponse, name="Обновить информацию о друге")
-def put_add(user_id: int, user_schema: UserRequest, users_service: UsersService = Depends(), user_req: int = Depends(check_admin)):
-    """
-    Обновить информацию обо мне
-    """
-    get_with_check(user_id, users_service)
-    return users_service.update(user_req, user_id, user_schema)
-
-
