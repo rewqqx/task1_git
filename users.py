@@ -1,8 +1,5 @@
 from fastapi.security import OAuth2PasswordRequestForm
 
-from src.models.schemas.utils.jwt_token import JwtToken
-
-from typing import List
 
 
 
