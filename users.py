@@ -1,18 +1,6 @@
 from fastapi.security import OAuth2PasswordRequestForm
 
-from src.models.schemas.utils.jwt_token import JwtToken
 
-from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
-from src.models.schemas.user.user_request import UserRequest
-from src.models.schemas.user.user_response import UserResponse
-from src.services.users import UsersService
-from src.services.users import get_current_user_id, check_admin
-
-router = APIRouter(
-    prefix='/users',
-    tags=['users'],
-)
 
 
 @router.post('/register', status_code=status.HTTP_201_CREATED, name='Регистрация')
